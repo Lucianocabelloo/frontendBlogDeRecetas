@@ -21,31 +21,31 @@ const DetalleReceta = () => {
 
   return (
     <Container className="my-3 mainContainer">
-      <Card>
-        <Row>
-          <Col md={6}>
+       <Card className="w-100 d-flex align-items-center justify-content-center cardContainerReceta">
+         <Row>
+           <Col md={6}>
             <Card.Img
-              variant="top"
-              src={receta.imagen}
+           variant="top"
+               src={receta.imagen}
             />
-          </Col>
-          <Col md={6}>
-            <Card.Body>
+           </Col>
+           <Col md={6}>
+             <Card.Body>
               <Card.Title className="primary-font">{receta.nombreReceta}</Card.Title>
               <hr />
               <Card.Text>
-              {receta.descripcionBreve}
+             {receta.descripcionBreve}
               <br/>
-              <br/>
+               <br/>
               <span className="primary-font fw-semibold ">Duración:</span> {receta.duracion}
-              <br className='mb-3'/>
+               <br className='mb-3'/>
               <span className="primary-font fw-semibold ">Porciones: {receta.porciones}</span></Card.Text>
-            </Card.Body>
-          </Col>
-        </Row>
-      </Card>
-    </Container>
-  );
+             </Card.Body>
+           </Col>
+         </Row>
+       </Card>
+     </Container>
+   );
 };
 
 export default DetalleReceta;

@@ -81,7 +81,9 @@
     color: rgb(255, 123, 0);
 }
 
-
+.cardContainerReceta{
+    height: 80vh;
+}
 
 
 .card {

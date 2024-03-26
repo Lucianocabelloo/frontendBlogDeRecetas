@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 
 export const RecetasCards = ({receta}) => {
@@ -6,7 +7,6 @@ export const RecetasCards = ({receta}) => {
     const ingredientesArray = receta.ingredientes.split(',').map(ingrediente => ingrediente.trim());
 
 
-    console.log(receta)
   return (
     <div className='card d-flex justify-content-between'>
         <div className='cardHeader d-flex gap-3'>
@@ -37,7 +37,7 @@ export const RecetasCards = ({receta}) => {
         </div>
         <hr />
         <div className='cardFooter'>
-            <a className='cardButton' href="#">Ver receta completa</a>
+        <Link className="btn btn-success" to={'/detalleReceta/'+ receta._id}>Ver receta completa</Link>
          
         </div>
     </div>
