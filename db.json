@@ -1,0 +1,24 @@
+{
+  "recetas": [
+    {
+      "nombreReceta": "Lomo de res con salsa barbacoa casera, patatas asadas y cebolla caramelizada",
+      "descripcionBreve": "¿Qué podría ser más acogedor que un sabroso filete con patatas asadas y cebolla caramelizada en una reunión festiva?",
+      "duracion": "120",
+      "ingredientes": "Carne de res, papa, cebolla, caramelo, aceite, oregano",
+      "preparacion": "1. Para hacer la salsa barbacoa, en una sartén mediana sofríe las cebollas y el ajo en un poco de aceite de oliva, hasta que estén tiernos. Añade todos los demás ingredientes para la salsa y deja cocer a fuego lento durante 10 a 15 minutos\n2. Pasa la salsa a un vaso batidor o en un procesador de alimentos, añade sal y pimienta y tritura hasta obtener una consistencia suave. Reserva.",
+      "porciones": "4",
+      "imagen": "https://cdn.shopify.com/s/files/1/0191/9978/files/ancho-1000.jpg",
+      "autor": "Agustin Maza",
+      "id": "595a"
+    }
+  ],
+  "usuarios": [
+    {
+      "email": "admin@admin.com",
+      "usuario": "Administrador",
+      "rol": "Administrador",
+      "password": "Admin1234",
+      "id": "e4b9"
+    }
+  ]
+}
