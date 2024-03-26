@@ -59,3 +59,17 @@ export const borrarRecetaAPI = async (id) => {
     console.log("El error es:", error);
   }
 };
+
+export const iniciarSesion = (usuario) => {
+  const userAdmin = {
+    email: 'admin@rollingcoffee.com',
+    password: '123Aa1233',
+  };
+
+  if (usuario.email === userAdmin.email && usuario.password === userAdmin.password) {
+    sessionStorage.setItem('loginRollingCoffee', JSON.stringify(userAdmin));
+    return true;
+  } else {
+    return false;
+  }
+};

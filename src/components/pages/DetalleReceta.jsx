@@ -1,6 +1,24 @@
+import { useEffect, useState } from "react";
 import { Container, Card, Row, Col } from "react-bootstrap";
+import { useParams } from "react-router-dom";
+import { obtenerRecetaUnica } from "../../helpers/queries";
 
-const DetalleProducto = () => {
+const DetalleReceta = () => {
+  const [receta, setReceta] = useState()
+
+  const {id} = useParams()
+
+  useEffect(() => {
+    cargarDatosRecetas()
+  }, [])
+  
+  const cargarDatosRecetas = async () =>{
+    const respuesta = await obtenerRecetaUnica(id)
+    if(respuesta.status === 200){
+      setReceta(await respuesta.json())
+    }
+  }
+
   return (
     <Container className="my-3 mainContainer">
       <Card>
@@ -8,20 +26,20 @@ const DetalleProducto = () => {
           <Col md={6}>
             <Card.Img
               variant="top"
-              src="https://cdn.pixabay.com/photo/2016/03/05/19/02/hamburger-1238246_1280.jpg"
+              src={receta.imagen}
             />
           </Col>
           <Col md={6}>
             <Card.Body>
-              <Card.Title className="primary-font">Cheese Burguer con verduras</Card.Title>
+              <Card.Title className="primary-font">{receta.nombreReceta}</Card.Title>
               <hr />
               <Card.Text>
-              Esta deliciosa Cheeseburger con Verduras combina lo mejor de ambos mundos: la jugosa carne de res, el queso derretido, y la frescura de las verduras.
+              {receta.descripcionBreve}
               <br/>
               <br/>
-              <span className="primary-font fw-semibold ">Duración:</span> 45
+              <span className="primary-font fw-semibold ">Duración:</span> {receta.duracion}
               <br className='mb-3'/>
-              <span className="primary-font fw-semibold ">240 Calorias</span></Card.Text>
+              <span className="primary-font fw-semibold ">Porciones: {receta.porciones}</span></Card.Text>
             </Card.Body>
           </Col>
         </Row>
@@ -30,4 +48,4 @@ const DetalleProducto = () => {
   );
 };
 
-export default DetalleProducto;
+export default DetalleReceta;

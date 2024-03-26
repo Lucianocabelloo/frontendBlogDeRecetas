@@ -2,29 +2,39 @@ import "./App.css";
 import "bootstrap-icons/font/bootstrap-icons.min.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Administrador from "./components/pages/Administrador";
 import Footer from "./components/common/Footer";
 import Inicio from "./components/pages/Inicio";
 import Error404 from "./components/pages/Error404";
-import RecetasForm from "./components/pages/recetas/RecetasForm";
 import Login from "./components/pages/Login";
+import DetalleReceta from "./components/pages/DetalleReceta";
+import RutasProtegidas from "./components/routes/RutasProtegidas";
+import RutasAdmin from "./components/routes/RutasAdmin";
+import { useState } from "react";
+import Menu from "./components/common/Menu";
 
 function App() {
+  const usuario = JSON.parse(sessionStorage.getItem('loginRollingCoffee')) || '';
+  const [usuarioLogueado, setUsuarioLogueado] = useState(usuario);
+
   return (
-    <BrowserRouter>
+ <BrowserRouter>
+      <Menu usuarioLogueado={usuarioLogueado} setUsuarioLogueado={setUsuarioLogueado} />
       <Routes>
-        <Route exact path="/" element={<Inicio></Inicio>}></Route>
+        <Route exact path="/" element={<Inicio />} />
+        <Route exact path="/detalleReceta/:id" element={<DetalleReceta />} />
+        <Route exact path="/login" element={<Login setUsuarioLogueado={setUsuarioLogueado} />} />
         <Route
           exact
-          path="/administrador"
-          element={<Administrador></Administrador>}
-        ></Route>
-        <Route exact path="/administrador/crear" element={<RecetasForm titulo="Nueva Receta" editar={false}></RecetasForm>}></Route>
-        <Route exact path="/administrador/editar/:id" element={<RecetasForm titulo="Editar Receta" editar={true}></RecetasForm>}></Route>
-        <Route path="*" element={<Error404></Error404>}></Route>
-        <Route path="/login/" element={<Login/>}></Route>
+          path="/administrador/*"
+          element={
+            <RutasProtegidas>
+              <RutasAdmin />
+            </RutasProtegidas>
+          }
+        />
+        <Route path="*" element={<Error404 />} />
       </Routes>
-      <Footer></Footer>
+      <Footer />
     </BrowserRouter>
   );
 }

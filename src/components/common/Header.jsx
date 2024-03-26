@@ -6,7 +6,6 @@ import Menu from './Menu'
 export const Header = () => {
   return (
     <header className='headerContainer'>
-      <Menu/>
         <section className='container-fluid d-flex justify-content-center align-items-center h-100 gap-3'>
             <div className='headerInfo d-flex flex-column gap-4 align-items-center'>
                 <h2>Cocina Deliciosas comidas con <span>El rincon Gourmet</span></h2>

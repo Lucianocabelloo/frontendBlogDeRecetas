@@ -29,7 +29,6 @@ const Administrador = () => {
   
   return (
     <>
-    <Menu></Menu>
     <Container className="my-4 mainContainer">
       <Row className="align-items-center justify-content-sm-center">
         <Col md="8">

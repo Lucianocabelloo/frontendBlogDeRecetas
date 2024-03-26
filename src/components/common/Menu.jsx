@@ -1,8 +1,15 @@
-import { Container, Nav, Navbar } from "react-bootstrap";
+import { Button, Container, Nav, Navbar } from "react-bootstrap";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/img/logo.png";
 
-const Menu = () => {
+const Menu = ({ usuarioLogueado, setUsuarioLogueado }) => {
+
+  const logout = ()=>{
+    //quitar la sesion de sessionStorage
+    sessionStorage.removeItem('loginRollingCoffee')
+    //limpiar el state
+    setUsuarioLogueado("")
+  }
   return (
     <Navbar
       expand="lg"
@@ -13,17 +20,9 @@ const Menu = () => {
     >
       <Container>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className=" w-100 d-flex justify-content-evenly align-items-center">
-            <div className="d-flex">
-              <NavLink end to="/" className="nav-link">
-                Inico
-              </NavLink>
-              <NavLink end to="/administrador" className="nav-link">
-                Administrador
-              </NavLink>
-            </div>
-            <div>
+        <Navbar.Collapse className=" justify-content-center" id="basic-navbar-nav">
+          <Nav>
+
               <Navbar.Brand as={Link} to="/">
                 {" "}
                 <img
@@ -35,15 +34,26 @@ const Menu = () => {
                 />{" "}
                 El Rincón Gourmet
               </Navbar.Brand>
-            </div>
-            <div className="d-flex">
-              <NavLink end to="/login" className="nav-link">
-                Login
+              <NavLink end to="/" className="nav-link">
+                Inico
               </NavLink>
+            {
+              usuarioLogueado?.length > 0 ? (
+                <>
+                  <NavLink end to="/administrador" className="nav-link">
+                    Administrador
+                  </NavLink>
+                  <Button onClick={logout}>Logout</Button>
+                </>
+              ) : (
+                <NavLink end to="/login" className="nav-link">
+                  Login
+                </NavLink>
+              )
+            }
               <a end href="/#recetas" className="nav-link">
                 Recetas
               </a>
-            </div>
           </Nav>
         </Navbar.Collapse>
       </Container>
